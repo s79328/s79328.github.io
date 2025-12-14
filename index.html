@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUR LIYANA - Student Bento Grid Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --color-white: #ffffff;
+            --color-light-grey: #f4f7fa; /* Background color */
+            --color-medium-grey: #e9ecef; /* Border color */
+            --color-dark-grey: #495057; /* Text color */
+            --color-accent: #0056b3; /* Deep Ocean Blue Accent (UMT Theme) */
+            --color-accent-soft: #d6e8ff; /* Lighter accent for background/hover */
+            --border-radius: 12px;
+            --font-stack: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-light-grey);
+            color: var(--color-dark-grey);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Max desktop width */
+        }
+
+        /* Bento Grid Styles */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+            grid-template-rows: auto;
+            gap: 16px; /* Spacing between grid items */
+            padding-bottom: 20px;
+        }
+
+        .bento-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-medium-grey);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle lift */
+        }
+
+        .bento-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Card-Specific Layout (Desktop) */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .card-playlist {
+            grid-column: span 3;
+            height: 120px;
+            justify-content: center;
+        }
+        
+        /* Typography and Content Styling */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: var(--color-dark-grey);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .time-display {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #212529;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .card-profile h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+        }
+
+        .card-profile .details {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        
+        .card-profile .tagline {
+            font-style: italic;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .bento-card {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                height: auto !important;
+            }
+
+            .card-playlist {
+                height: auto !important;
+            }
+
+            .time-display {
+                font-size: 1.8rem;
+            }
+
+            .card-profile h1 {
+                font-size: 2rem;
+            }
+
+            .card-profile .details {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="bento-grid">
+
+        <div class="bento-card card-profile">
+            <div>
+                <h1>NUR LIYANA BINTI JASNI</h1>
+                <p class="details">
+                    Food Science Program | Year 1
+                </p>
+                <p class="tagline">
+                    'Innovating food safety.'
+                </p>
+                <p>
+                    A first-year student at UMT passionate about food chemistry and applying analytical methods to ensure high standards of food quality and safety.
+                </p>
+            </div>
+            <div class="social-links">
+                <h3>Connect</h3>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
+            </div>
+        </div>
+
+        <div class="bento-card card-location">
+            <div>
+                <h3>Location & Time</h3>
+                <p>UMT, Kuala Nerus, Terengganu</p>
+            </div>
+            <div class="time-display">
+                2:14 PM <br> (GMT+8)
+            </div>
+        </div>
+
+        <div class="bento-card card-hobby">
+            <h3>Hobby</h3>
+            <p>
+                <strong>Reading Books:</strong> Focusing on scientific non-fiction and classic literature to broaden perspective and analytical thinking.
+            </p>
+            <p>
+                <em>Currently reading a book on the history of fermentation.</em>
+            </p>
+        </div>
+        
+        <div class="bento-card card-tech-stack">
+            <h3>Key Subjects/Skills</h3>
+            <p>
+                <strong>Food Chemistry:</strong> Fundamentals of macro and micronutrients.
+            </p>
+            <p>
+                <strong>Food Microbiology:</strong> Culturing techniques and pathogen control.
+            </p>
+            <p>
+                *Proficient in Microsoft **Excel** for data analysis and graphical presentation, basic **Lab Analysis** tools.
+            </p>
+        </div>
+        
+        <div class="bento-card card-case-study">
+            <h3>Recent Case Study</h3>
+            <h2>
+                Starch Gelatinization in Local Kuih
+            </h2>
+            <p>
+                Analyzing the process of **starch gelatinization** 
+
+[Image of starch gelatinization diagram]
+ and retrogradation in Kuih Lapis to understand how ingredient ratios and steaming time affect the final **texture profiles** of the traditional food product.
+            </p>
+            <p>
+                <small style="color: var(--color-accent);">#FoodTexture #KuihLapis #FoodScience</small>
+            </p>
+        </div>
+
+        <div class="bento-card card-playlist">
+            <h3>Study Playlist</h3>
+            <p>
+                Placeholder for an embedded music player (e.g., Lofi study music or classical pieces).
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>
