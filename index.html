@@ -16,6 +16,7 @@
             --color-accent-soft: #d6e8ff; /* Lighter accent for background/hover */
             --border-radius: 12px;
             --font-stack: 'Inter', sans-serif;
+            --color-text-on-dark: #f0f8ff; /* Light text for use on dark backgrounds */
         }
 
         * {
@@ -30,7 +31,8 @@
             color: var(--color-dark-grey);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
         }
 
@@ -38,7 +40,7 @@
             width: 100%;
             max-width: 1200px; /* Max desktop width */
         }
-
+        
         /* Bento Grid Styles */
         .bento-grid {
             display: grid;
@@ -46,6 +48,7 @@
             grid-template-rows: auto;
             gap: 16px; /* Spacing between grid items */
             padding-bottom: 20px;
+            width: 100%;
         }
 
         .bento-card {
@@ -58,18 +61,60 @@
             justify-content: space-between;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle lift */
+            /* Ensure text inside is the default color */
+            color: var(--color-dark-grey);
         }
 
+        /* Subtle Zoom/Scale Effect on Hover */
         .bento-card:hover {
             border-color: var(--color-accent);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.01); 
         }
 
         /* Card-Specific Layout (Desktop) */
+        
+        /* Card 1 (Profile) spans 3 columns to be completely above others */
         .card-profile {
-            grid-column: span 2;
-            grid-row: span 2;
+            grid-column: span 3;
+            grid-row: 1 / span 1; 
+            
+            /* --- UPDATES FOR BACKGROUND IMAGE --- */
+            /* Use linear-gradient for a dark overlay to ensure text is readable */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* Change text color to white/light for readability on the dark background */
+            color: var(--color-text-on-dark); 
+            border: none; /* Remove border when using a strong background image */
+        }
+
+        /* Reorganizing remaining cards below the new large Profile card */
+        .card-location {
+            grid-column: 1 / span 1;
+            grid-row: 2 / span 1;
+        }
+
+        .card-tech-stack {
+            grid-column: 2 / span 1;
+            grid-row: 2 / span 1;
+        }
+        
+        .card-hobby {
+            grid-column: 3 / span 1;
+            grid-row: 2 / span 1;
+        }
+        
+        .card-reflection {
+            grid-column: 1 / span 1;
+            grid-row: 3 / span 1;
+        }
+        
+        .card-case-study {
+            grid-column: 2 / span 2;
+            grid-row: 3 / span 1;
         }
 
         .card-playlist {
@@ -79,6 +124,22 @@
         }
         
         /* Typography and Content Styling */
+        
+        .card-profile h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            /* Change h1 color to white for the profile card */
+            color: var(--color-white); 
+        }
+
+        .card-profile .details {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            /* Change details color to light grey */
+            color: var(--color-text-on-dark);
+        }
+        
         h2 {
             font-size: 1.5rem;
             font-weight: 700;
@@ -100,7 +161,8 @@
         }
 
         .social-links a {
-            color: var(--color-dark-grey);
+            /* Ensure links are white/light within the profile card, dark elsewhere */
+            color: var(--color-text-on-dark); 
             text-decoration: none;
             margin-right: 15px;
             font-weight: 500;
@@ -108,8 +170,9 @@
             transition: color 0.2s;
         }
 
-        .social-links a:hover {
-            color: var(--color-accent);
+        /* Ensure hover effect works for white links */
+        .card-profile .social-links a:hover {
+            color: var(--color-accent-soft); 
         }
 
         .time-display {
@@ -120,28 +183,16 @@
             margin-top: 10px;
         }
 
-        .card-profile h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-accent);
-            margin-bottom: 5px;
-        }
-
-        .card-profile .details {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #6c757d;
-        }
-        
         .card-profile .tagline {
             font-style: italic;
             font-weight: 600;
-            color: #212529;
+            /* Change tagline color to light grey */
+            color: var(--color-text-on-dark);
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 992px) {
+            
             .bento-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -178,9 +229,9 @@
 
         <div class="bento-card card-profile">
             <div>
-                <h1>NUR LIYANA BINTI JASNI</h1>
+                <h1>NUR LIYANA BINTI JASNI</h1> 
                 <p class="details">
-                    Food Science Program | Year 1
+                    Student Profile | Year 1
                 </p>
                 <p class="tagline">
                     'Innovating food safety.'
@@ -190,9 +241,9 @@
                 </p>
             </div>
             <div class="social-links">
-                <h3>Connect</h3>
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">GitHub</a>
+                <h3>Connect (Opens New Tab)</h3>
+                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com/s79328" target="_blank">GitHub</a>
                 <a href="#" target="_blank">UMT Portal</a>
             </div>
         </div>
@@ -203,20 +254,10 @@
                 <p>UMT, Kuala Nerus, Terengganu</p>
             </div>
             <div class="time-display">
-                2:14 PM <br> (GMT+8)
+                3:17 PM <br> (GMT+8)
             </div>
         </div>
 
-        <div class="bento-card card-hobby">
-            <h3>Hobby</h3>
-            <p>
-                <strong>Reading Books:</strong> Focusing on scientific non-fiction and classic literature to broaden perspective and analytical thinking.
-            </p>
-            <p>
-                <em>Currently reading a book on the history of fermentation.</em>
-            </p>
-        </div>
-        
         <div class="bento-card card-tech-stack">
             <h3>Key Subjects/Skills</h3>
             <p>
@@ -230,16 +271,36 @@
             </p>
         </div>
         
+        <div class="bento-card card-hobby">
+            <h3>Hobby</h3>
+            <p>
+                <strong>Reading Books:</strong> Focusing on scientific non-fiction and classic literature to broaden perspective and analytical thinking.
+            </p>
+            <p>
+                <em>Currently reading a book on the history of fermentation.</em>
+            </p>
+        </div>
+
+        <div class="bento-card card-reflection">
+            <h3>Reflection: Why Food Tech Matters</h3>
+            <h2>
+                Sustainable Food Security in Malaysia
+            </h2>
+            <p>
+                Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition for communities across the nation. 
+            </p>
+            <p>
+                <small style="color: var(--color-accent);">#Sustainability #FoodSecurity #LocalEconomy</small>
+            </p>
+        </div>
+        
         <div class="bento-card card-case-study">
             <h3>Recent Case Study</h3>
             <h2>
                 Starch Gelatinization in Local Kuih
             </h2>
             <p>
-                Analyzing the process of **starch gelatinization** 
-
-[Image of starch gelatinization diagram]
- and retrogradation in Kuih Lapis to understand how ingredient ratios and steaming time affect the final **texture profiles** of the traditional food product.
+                Analyzing the process of **starch gelatinization**  and retrogradation in Kuih Lapis to understand how ingredient ratios and steaming time affect the final **texture profiles** of the traditional food product.
             </p>
             <p>
                 <small style="color: var(--color-accent);">#FoodTexture #KuihLapis #FoodScience</small>
@@ -248,9 +309,7 @@
 
         <div class="bento-card card-playlist">
             <h3>Study Playlist</h3>
-            <p>
-                Placeholder for an embedded music player (e.g., Lofi study music or classical pieces).
-            </p>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3i4BISVO0L6mrVM7V0IPGo?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
         
     </div>
